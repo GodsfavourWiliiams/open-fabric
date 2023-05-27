@@ -1,3 +1,5 @@
-.example-spacer {
-  flex: 1 1 auto;
+.wrapper {
+  margin: 14px auto;
+  max-width: 1200px;
+  width: 100%;
 }
