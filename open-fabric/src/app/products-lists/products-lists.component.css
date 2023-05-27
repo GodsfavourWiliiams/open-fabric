@@ -1,7 +1,7 @@
 .card {
-  max-width: 300px;
   margin: auto;
   position: relative;
+  height: 100%;
 }
 .product-name {
   font-weight: 600;
@@ -24,10 +24,5 @@
 }
 
 .card > img {
-  height: 220px;
-}
-
-.header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+  height: 200px;
 }

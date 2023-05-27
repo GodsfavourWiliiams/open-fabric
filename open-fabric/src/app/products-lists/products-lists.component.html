@@ -1,10 +1,10 @@
 <mat-card class="card">
-  <img mat-card-image [src]="product.imgUrl" [alt]="product.name" />
+  <img mat-card-image [src]="product.imgUrl" [alt]="product.title" />
   <mat-icon class="edit-icon">edit</mat-icon>
   <mat-card-content>
-    <p class="product-name">{{ product.name }}</p>
+    <p class="product-name">{{ product.title }}</p>
     <p class="product-text">
-      {{ product.desc }}
+      {{ product.description }}
     </p>
   </mat-card-content>
   <mat-card-actions>

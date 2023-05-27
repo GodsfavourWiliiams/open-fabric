@@ -1,3 +1,8 @@
-.example-spacer {
-  flex: 1 1 auto;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px auto;
+  max-width: 1200px;
+  width: 100%;
 }

@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { AddEditComponent } from './add-edit/add-edit.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     PageNotFoundComponent,
     HomeComponent,
+    AddEditComponent,
   ],
   imports: [
     BrowserModule,
