@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Products } from '../products';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-products-details',
@@ -7,5 +9,14 @@ import { Products } from '../products';
   styleUrls: ['./products-details.component.css'],
 })
 export class ProductsDetailsComponent {
-  @Input() products!: Products;
+  route: ActivatedRoute = inject(ActivatedRoute);
+  product: Products | undefined;
+  productService = inject(ProductService);
+
+  constructor() {
+    const params = this.route.snapshot.paramMap;
+    const productId = Number(params.get('productId'));
+    this.product = this.productService.getSingleProduct(productId);
+    console.log(this.productService);
+  }
 }

@@ -1,1 +1,5 @@
-<p>products-details works!</p>
+<div class="row product-details" *ngIf="product">
+  <div class="col-sm-6">
+    <img class="product-img" src="{{ product.imgUrl }}" alt="" />
+  </div>
+</div>

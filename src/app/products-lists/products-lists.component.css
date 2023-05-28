@@ -11,7 +11,7 @@
 .product-text {
 }
 
-.edit-icon {
+.menu-icon {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -19,7 +19,6 @@
   color: black;
   background-color: white;
   border-radius: 50%;
-  padding: 8px;
   cursor: pointer;
 }
 

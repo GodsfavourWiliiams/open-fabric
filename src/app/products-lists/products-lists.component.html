@@ -1,13 +1,29 @@
 <mat-card class="card">
   <img mat-card-image [src]="product.imgUrl" [alt]="product.title" />
-  <mat-icon class="edit-icon">edit</mat-icon>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item>
+      <a [routerLink]="['/products', product.id]">
+        <mat-icon>more</mat-icon>
+        <span>View</span>
+      </a>
+    </button>
+  </mat-menu>
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+    class="menu-icon"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
   <mat-card-content>
     <p class="product-name">{{ product.title }}</p>
     <p class="product-text">
       {{ product.description }}
     </p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>View more</button>
-  </mat-card-actions>
 </mat-card>

@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    MatMenuModule,
     MatProgressBarModule,
     // ReactiveFormsModule,
     MatIconModule,
