@@ -2,6 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Products } from '../products';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
+import { ThemePalette } from '@angular/material/core';
+
+export interface ChipColor {
+  name: string;
+  color: string;
+}
 
 @Component({
   selector: 'app-products-details',
@@ -19,4 +25,11 @@ export class ProductsDetailsComponent {
     this.product = this.productService.getSingleProduct(productId);
     console.log(this.productService);
   }
+
+  availableColors: ChipColor[] = [
+    { name: 'blue', color: 'blue' },
+    { name: 'Primary', color: 'primary' },
+    { name: 'Accent', color: 'accent' },
+    { name: 'Warn', color: 'warn' },
+  ];
 }

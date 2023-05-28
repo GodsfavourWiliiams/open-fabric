@@ -6,3 +6,11 @@
   max-width: 1200px;
   width: 100%;
 }
+.logo {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: black;
+  font-weight: 600;
+}

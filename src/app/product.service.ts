@@ -13,7 +13,8 @@ export class ProductService {
       color: 'Black',
       description:
         'Capture stunning photos with this professional-grade digital SLR camera. It features a high-resolution sensor, advanced autofocus system, and a range of manual controls for creative photography.',
-      imgUrl: 'https://via.placeholder.com/600/aa8f2e',
+      imgUrl:
+        'https://images.unsplash.com/photo-1678107520091-c250d5068943?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
       id: 27,
@@ -22,7 +23,8 @@ export class ProductService {
       color: 'RGB',
       description:
         'Experience gaming like never before with this powerful gaming laptop. It boasts a high-refresh-rate display, a fast processor, dedicated graphics, and a customizable RGB keyboard for an immersive gaming experience.',
-      imgUrl: 'https://via.placeholder.com/600/6f2b2b',
+      imgUrl:
+        'https://images.unsplash.com/photo-1640955014216-75201056c829?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80',
     },
     {
       id: 28,
@@ -31,7 +33,8 @@ export class ProductService {
       color: 'White',
       description:
         'Conveniently charge your compatible devices with this wireless charging pad. Simply place your device on the pad, and it will start charging without the need for cables or connectors.',
-      imgUrl: 'https://via.placeholder.com/600/121fa9',
+      imgUrl:
+        'https://images.unsplash.com/photo-1591290619762-74ad14fa5db4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=809',
     },
     {
       id: 29,
@@ -40,7 +43,8 @@ export class ProductService {
       color: 'Silver',
       description:
         'Keep your floors clean effortlessly with this robotic vacuum cleaner. It navigates your home, detects obstacles, and automatically adjusts its cleaning patterns to effectively remove dust and dirt.',
-      imgUrl: 'https://via.placeholder.com/600/2c6f99',
+      imgUrl:
+        'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
       id: 30,
@@ -49,7 +53,8 @@ export class ProductService {
       color: 'Black',
       description:
         'Immerse yourself in music without distractions with these wireless noise-canceling headphones. They provide crystal-clear sound, active noise cancellation, and a comfortable over-ear design for long listening sessions.',
-      imgUrl: 'https://via.placeholder.com/600/ae7f2c',
+      imgUrl:
+        'https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1326&q=80',
     },
     {
       id: 1,
@@ -58,7 +63,8 @@ export class ProductService {
       color: 'Blue',
       description:
         'Look elegant and fashionable with this stylish blue dress. Made with high-quality fabric and a flattering fit, it is perfect for any occasion.',
-      imgUrl: 'https://via.placeholder.com/600/92c952',
+      imgUrl:
+        'https://images.unsplash.com/photo-1542657151-46caefc7e187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
       id: 2,
@@ -67,7 +73,8 @@ export class ProductService {
       color: 'Brown',
       description:
         'Keep your essentials organized with this classic leather wallet. It features multiple card slots, a bill compartment, and a slim design that fits comfortably in your pocket.',
-      imgUrl: 'https://via.placeholder.com/600/771796',
+      imgUrl:
+        'https://images.unsplash.com/photo-1525936196272-ee0c2f2e5ca6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
       id: 3,
@@ -76,7 +83,8 @@ export class ProductService {
       color: 'Black',
       description:
         'Protect your eyes in style with these vintage sunglasses. The retro design and high-quality lenses provide both fashion and UV protection.',
-      imgUrl: 'https://via.placeholder.com/600/24f355',
+      imgUrl:
+        'https://images.unsplash.com/photo-1456421385613-d0666bb96b78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80',
     },
     {
       id: 21,
@@ -85,7 +93,8 @@ export class ProductService {
       color: 'Black',
       description:
         'Enjoy immersive audio and freedom of movement with these wireless Bluetooth earbuds. They offer high-quality sound, long battery life, and a comfortable fit for all-day use.',
-      imgUrl: 'https://via.placeholder.com/600/8e973b',
+      imgUrl:
+        'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80',
     },
     {
       id: 22,
@@ -94,7 +103,8 @@ export class ProductService {
       color: 'Cognac',
       description:
         'Carry your essentials in style with this premium leather handbag. It features a spacious interior, multiple compartments, and a timeless design that complements any outfit.',
-      imgUrl: 'https://via.placeholder.com/600/ae7f2c',
+      imgUrl:
+        'https://images.unsplash.com/photo-1473188588951-666fce8e7c68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1274&q=80',
     },
     {
       id: 23,
@@ -103,7 +113,8 @@ export class ProductService {
       color: 'White',
       description:
         'Protect your home with this smart security system. It includes cameras, motion sensors, and a central hub that allows you to monitor and control your home security from anywhere.',
-      imgUrl: 'https://via.placeholder.com/600/2c6f99',
+      imgUrl:
+        'https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     },
     {
       id: 24,
@@ -112,7 +123,8 @@ export class ProductService {
       color: 'Rose Gold',
       description:
         'Track your fitness goals with this stylish and feature-packed fitness tracker watch. It monitors your heart rate, counts steps, analyzes sleep patterns, and provides real-time workout data.',
-      imgUrl: 'https://via.placeholder.com/600/121fa9',
+      imgUrl:
+        'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80',
     },
     {
       id: 25,
@@ -121,7 +133,7 @@ export class ProductService {
       color: 'Red',
       description:
         'Take your music wherever you go with this portable Bluetooth speaker. It delivers high-quality sound, has a long battery life, and is water-resistant, making it perfect for outdoor adventures.',
-      imgUrl: 'https://via.placeholder.com/600/6f2b2b',
+      imgUrl: 'https://images.unsplash.com/photo-1605648916319-cf082f7524a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     },
   ];
   getAllProduct(): Products[] {
