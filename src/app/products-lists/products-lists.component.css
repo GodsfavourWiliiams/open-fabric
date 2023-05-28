@@ -8,8 +8,6 @@
   text-transform: capitalize;
   padding-top: 10px;
 }
-.product-text {
-}
 
 .menu-icon {
   position: absolute;
@@ -23,7 +21,7 @@
 }
 
 .card > img {
-  height: 200px;
+  height: 220px;
 }
 
 .link {

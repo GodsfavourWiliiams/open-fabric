@@ -133,7 +133,8 @@ export class ProductService {
       color: 'Red',
       description:
         'Take your music wherever you go with this portable Bluetooth speaker. It delivers high-quality sound, has a long battery life, and is water-resistant, making it perfect for outdoor adventures.',
-      imgUrl: 'https://images.unsplash.com/photo-1605648916319-cf082f7524a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      imgUrl:
+        'https://images.unsplash.com/photo-1605648916319-cf082f7524a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     },
   ];
   getAllProduct(): Products[] {
