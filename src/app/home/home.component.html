@@ -3,7 +3,12 @@
   <p>Loading...</p>
 </div>
 
-<div *ngIf="error">{{ error }}Error occurred while fetching products.</div>
+<div class="error" *ngIf="error">
+  {{ error }}
+  <h3 class="h2">Please make sure your json server is running</h3>
+  <code>json-server --watch db.json</code>
+  <p>Error occurred while fetching products.</p>
+</div>
 
 <div class="" *ngIf="!isLoading && !error">
   <section class="results">
