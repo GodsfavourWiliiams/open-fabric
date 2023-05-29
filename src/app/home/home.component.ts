@@ -9,9 +9,23 @@ import { Products } from '../products';
 })
 export class HomeComponent {
   productList: Products[] = [];
+  isLoading = false;
+  isError = false;
+
   productService: ProductService = inject(ProductService);
 
   constructor() {
-    this.productList = this.productService.getAllProduct();
+    this.isLoading = true;
+    this.productService
+      .getAllProduct()
+      .then((productList: Products[]) => {
+        this.productList = productList;
+      })
+      .catch(() => {
+        this.isError = true;
+      })
+      .finally(() => {
+        this.isLoading = false;
+      });
   }
 }

@@ -22,7 +22,9 @@ export class ProductsDetailsComponent {
   constructor() {
     const params = this.route.snapshot.paramMap;
     const productId = Number(params.get('productId'));
-    this.product = this.productService.getSingleProduct(productId);
+    this.productService.getSingleProduct(productId).then((productList) => {
+      this.product = productList;
+    });
     console.log(this.productService);
   }
 

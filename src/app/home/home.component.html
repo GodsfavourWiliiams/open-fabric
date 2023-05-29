@@ -2,5 +2,7 @@
   <app-products-lists
     *ngFor="let product of productList"
     [product]="product"
+    [isLoading]="isLoading"
+    [isError]="isError"
   ></app-products-lists>
 </section>
