@@ -9,13 +9,14 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsListsComponent } from './products-lists/products-lists.component';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import { AlertsComponent } from './alerts/alerts.component';
-// import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     MatChipsModule,
     MatProgressBarModule,
     MatDialogModule,
-    // ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
     MatIconModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),

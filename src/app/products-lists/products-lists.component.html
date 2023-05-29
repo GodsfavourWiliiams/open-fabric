@@ -1,4 +1,6 @@
-<mat-card class="card">
+<!-- ProductsListsComponent -->
+
+<mat-card class="card" *ngIf="!isLoading && !isError">
   <img mat-card-image [src]="product.imgUrl" [alt]="product.title" />
   <mat-menu #menu="matMenu" xPosition="before">
     <button mat-menu-item>

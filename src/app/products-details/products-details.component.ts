@@ -17,15 +17,25 @@ export interface ChipColor {
 export class ProductsDetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   product: Products | undefined;
+  isLoading = true;
+  isError: any = null;
   productService = inject(ProductService);
 
   constructor() {
     const params = this.route.snapshot.paramMap;
     const productId = Number(params.get('productId'));
-    this.productService.getSingleProduct(productId).then((productList) => {
-      this.product = productList;
-    });
-    console.log(this.productService);
+    this.fetchProduct(productId);
+  }
+
+  async fetchProduct(productId: number) {
+    this.isLoading = true;
+    try {
+      this.product = await this.productService.getSingleProduct(productId);
+    } catch (error) {
+      this.isError = error;
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   availableColors: ChipColor[] = [

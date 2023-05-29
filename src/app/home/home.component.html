@@ -1,8 +1,15 @@
-<section class="results">
-  <app-products-lists
-    *ngFor="let product of productList"
-    [product]="product"
-    [isLoading]="isLoading"
-    [isError]="isError"
-  ></app-products-lists>
-</section>
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+  <p>Loading...</p>
+</div>
+
+<div *ngIf="error">{{ error }}Error occurred while fetching products.</div>
+
+<div class="" *ngIf="!isLoading && !error">
+  <section class="results">
+    <app-products-lists
+      *ngFor="let product of productList"
+      [product]="product"
+    ></app-products-lists>
+  </section>
+</div>

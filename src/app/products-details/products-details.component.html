@@ -1,4 +1,13 @@
-<div class="card">
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+  <p>Loading single product...</p>
+</div>
+
+<div *ngIf="isError">
+  {{ isError }}Error occurred while fetching single product.
+</div>
+
+<div class="card" *ngIf="!isLoading && !isError">
   <div class="container-fliud">
     <div class="wrapper row">
       <div class="tab-pane active" id="pic-1">

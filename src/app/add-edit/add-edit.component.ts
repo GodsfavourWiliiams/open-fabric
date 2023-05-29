@@ -2,9 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
+export interface DialogData {}
 
 @Component({
   selector: 'app-add-edit',
@@ -15,11 +13,7 @@ export class AddEditComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog() {
-    this.dialog.open(DialogDataExampleDialog, {
-      data: {
-        animal: 'panda',
-      },
-    });
+    this.dialog.open(DialogDataExampleDialog, {});
   }
 }
 

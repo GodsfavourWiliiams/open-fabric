@@ -9,23 +9,25 @@ import { Products } from '../products';
 })
 export class HomeComponent {
   productList: Products[] = [];
-  isLoading = false;
-  isError = false;
+  isLoading = true;
+  error: any = null;
 
   productService: ProductService = inject(ProductService);
 
   constructor() {
+    this.fetchProducts();
+  }
+
+  async fetchProducts() {
     this.isLoading = true;
-    this.productService
-      .getAllProduct()
-      .then((productList: Products[]) => {
-        this.productList = productList;
-      })
-      .catch(() => {
-        this.isError = true;
-      })
-      .finally(() => {
-        this.isLoading = false;
-      });
+    this.error = null;
+
+    try {
+      this.productList = await this.productService.getAllProduct();
+    } catch (error) {
+      this.error = error;
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

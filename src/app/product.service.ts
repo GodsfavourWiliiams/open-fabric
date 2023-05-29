@@ -6,9 +6,8 @@ import { Products } from './products';
 })
 export class ProductService {
   url = 'https://my-json-server.typicode.com/GodsfavourWiliiams/api/products';
-
-  isLoading = false;
-  isError = false;
+  isLoading = true;
+  error: any = null;
 
   async getAllProduct(): Promise<Products[]> {
     try {
@@ -19,7 +18,7 @@ export class ProductService {
       return productList ?? [];
     } catch (error) {
       this.isLoading = false;
-      this.isError = true;
+      this.error = error;
       throw error;
     }
   }
@@ -33,18 +32,19 @@ export class ProductService {
       return product ?? {};
     } catch (error) {
       this.isLoading = false;
-      this.isError = true;
+      this.error = error;
       throw error;
     }
   }
-
-  // getExistingIds(): string[] {
-  //   // fetch the existing IDs from the database or API
-  //   const existingIds = this.productList.map((product:any) =>
-  //     product.id.toString()
-  //   );
-  //   return existingIds;
-  // }
-
+  async getExistingIds(): Promise<string[]> {
+    try {
+      const data = await fetch(this.url);
+      const productList = await data.json();
+      return productList.map((product: any) => product.id.toString());
+    } catch (error) {
+      this.error = error;
+      throw error;
+    }
+  }
   constructor() {}
 }

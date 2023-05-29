@@ -8,6 +8,6 @@ import { Products } from '../products';
 })
 export class ProductsListsComponent {
   @Input() product!: Products;
-  @Input() isLoading: boolean;
-  @Input() isError: boolean;
+  @Input() isLoading?: boolean;
+  @Input() isError?: boolean;
 }
