@@ -90,9 +90,9 @@
     },
     {
       "id": 24,
-      "title": "Fitness Tracker Watch",
-      "price": 89.99,
+      "title": "Fitness Tracker watch",
       "color": "Rose gold",
+      "price": 89.99,
       "description": "Track your fitness goals with this stylish and feature-packed fitness tracker watch. It monitors your heart rate, counts steps, analyzes sleep patterns, and provides real-time workout data.",
       "imgUrl": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80"
     },
@@ -103,14 +103,6 @@
       "color": "Red",
       "description": "Take your music wherever you go with this portable Bluetooth speaker. It delivers high-quality sound, has a long battery life, and is water-resistant, making it perfect for outdoor adventures.",
       "imgUrl": "https://images.unsplash.com/photo-1605648916319-cf082f7524a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-    },
-    {
-      "id": "8292",
-      "title": "milk sweet",
-      "color": "milky",
-      "price": "4000",
-      "description": "You may be thinking that I have already added it in AppModule and it should inherit from it? But it is not. Because these modules are exporting required directives that are available only in importing modules. Read more in Sharing modules.",
-      "imgUrl": "https://images.unsplash.com/photo-1684873878361-52ea727733db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
     }
   ]
 }

@@ -35,16 +35,13 @@ export class HomeComponent {
   }
 
   async deleteProduct(id: number) {
-    const confirmed = confirm('Are you sure you want to delete this product?');
-    if (confirmed) {
-      try {
-        await this.productService.deleteProduct(id);
-        alert('Product deleted successfully');
-        // Additional logic after successfully deleting the product
-      } catch (error) {
-        alert('Failed to delete product' + ' ' + error);
-        // Additional error handling logic
-      }
+    try {
+      await this.productService.deleteProduct(id);
+      alert('Product deleted successfully');
+      // Additional logic after successfully deleting the product
+    } catch (error) {
+      alert('Failed to delete product' + ' ' + error);
+      // Additional error handling logic
     }
   }
 }
