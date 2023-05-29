@@ -4,7 +4,9 @@
   (ngSubmit)="addProduct()"
   class="form-group"
 >
-  <h1 mat-dialog-title>Add Product</h1>
+  <h1 mat-dialog-title>
+    {{ this.data.product ? 'Edit Product' : 'Add Product' }}
+  </h1>
 
   <mat-form-field class="full-width">
     <mat-label>Title</mat-label>
@@ -37,6 +39,8 @@
 
   <div mat-dialog-actions class="button-group">
     <button mat-button mat-dialog-close>Close</button>
-    <button mat-raised-button color="primary" type="submit">Add Product</button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ this.data.product ? 'Update Product' : 'Add Product' }}
+    </button>
   </div>
 </form>

@@ -53,6 +53,8 @@ export class AddEditComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'success') {
         // Refresh the product list or perform any necessary actions after successful add/edit
+      } else {
+        this.product = undefined; // Clear the passed product
       }
     });
   }
@@ -73,8 +75,9 @@ export class AddEditComponent {
   ],
 })
 export class DialogDataExampleDialog implements OnInit {
-  // @Input() product: Products | undefined;
+  @Input() product: Products | undefined;
   productForm: FormGroup = new FormGroup({});
+
   @Output() productAddedOrUpdated: EventEmitter<string> =
     new EventEmitter<string>();
 
@@ -85,19 +88,27 @@ export class DialogDataExampleDialog implements OnInit {
     private productService: ProductService,
     public dialogRef: MatDialogRef<DialogDataExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: { product: Products | undefined }
-  ) {}
+  ) {
+    this.productForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      color: ['', Validators.required],
+      price: ['', Validators.required],
+      description: ['', Validators.required],
+      imgUrl: ['', Validators.required],
+    });
+  }
 
   async ngOnInit() {
     if (this.data.product) {
-      this.productForm = this.formBuilder.group({
-        title: [this.data.product.title || '', Validators.required],
-        color: [this.data.product.color || '', Validators.required],
-        price: [this.data.product.price || '', Validators.required],
-        description: [this.data.product.description || '', Validators.required],
-        imgUrl: [this.data.product.imgUrl || '', Validators.required],
+      this.productForm.patchValue({
+        title: this.data.product.title || '',
+        color: this.data.product.color || '',
+        price: this.data.product.price || '',
+        description: this.data.product.description || '',
+        imgUrl: this.data.product.imgUrl || '',
       });
     }
-    console.log(this.data.product);
+    // console.log(this.data.product);
     this.existingIds = await this.productService.getExistingIds();
   }
 
@@ -122,7 +133,7 @@ export class DialogDataExampleDialog implements OnInit {
     if (this.data.product) {
       // Editing existing product
       const updatedProduct = {
-        id: this.data.product.id, // Use this.data.product instead of this.product
+        id: this.data.product.id, // Using this.data.product instead of this.product
         title: this.productForm.value.title,
         color: this.productForm.value.color,
         price: this.productForm.value.price,
@@ -132,7 +143,7 @@ export class DialogDataExampleDialog implements OnInit {
 
       try {
         await fetch(`${this.productService.url}/${this.data.product.id}`, {
-          // Use this.data.product instead of this.product
+          // Using this.data.product instead of this.product
           method: 'PUT',
           body: JSON.stringify(updatedProduct),
           headers: {
@@ -140,9 +151,9 @@ export class DialogDataExampleDialog implements OnInit {
           },
         });
 
-        console.log('Product updated successfully');
+        alert('Product updated successfully');
       } catch (error) {
-        console.log('Failed to update product', error);
+        alert('Failed to update product' + ' ' + error);
       }
     } else {
       // Adding new product
@@ -155,7 +166,7 @@ export class DialogDataExampleDialog implements OnInit {
         description: this.productForm.value.description,
         imgUrl: this.productForm.value.imgUrl,
       };
-
+      console.log(newProduct);
       try {
         await fetch(this.productService.url, {
           method: 'POST',
@@ -165,9 +176,9 @@ export class DialogDataExampleDialog implements OnInit {
           },
         });
 
-        console.log('Product added successfully');
+        alert('Product added successfully');
       } catch (error) {
-        console.log('Failed to add product', error);
+        alert('Failed to add product' + ' ' + error);
       }
     }
     // Optional: Clear the form after adding the product
