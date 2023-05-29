@@ -10,6 +10,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -55,7 +58,10 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
+    FormsModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
   ],
