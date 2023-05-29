@@ -5,7 +5,8 @@ import { Products } from './products';
   providedIn: 'root',
 })
 export class ProductService {
-  url = 'https://my-json-server.typicode.com/GodsfavourWiliiams/api/products';
+  // url = 'https://my-json-server.typicode.com/GodsfavourWiliiams/api/products';
+  url = 'http://localhost:3000/products';
   isLoading = true;
   error: any = null;
 
@@ -16,6 +17,21 @@ export class ProductService {
       const productList = await data.json();
       this.isLoading = false;
       return productList ?? [];
+    } catch (error) {
+      this.isLoading = false;
+      this.error = error;
+      throw error;
+    }
+  }
+
+  async deleteProduct(id: number): Promise<Products | undefined> {
+    try {
+      this.isLoading = true;
+      const response = await fetch(`${this.url}/${id}`, {
+        method: 'DELETE',
+      });
+      this.isLoading = false;
+      return response.json();
     } catch (error) {
       this.isLoading = false;
       this.error = error;

@@ -74,36 +74,31 @@ export class DialogDataExampleDialog implements OnInit {
 
   async addProduct() {
     if (!this.productForm.valid) {
-      const newId = this.generateRandomId();
-      const newProduct = {
-        id: newId,
-        title: this.productForm.value.title,
-        color: this.productForm.value.color,
-        price: this.productForm.value.price,
-        description: this.productForm.value.description,
-        imgUrl: this.productForm.value.imgUrl,
-      };
+      return;
+    }
 
-      try {
-        const response = await fetch(this.productService.url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newProduct),
-        });
+    const newId = this.generateRandomId();
+    const newProduct = {
+      id: newId,
+      title: this.productForm.value.title,
+      color: this.productForm.value.color,
+      price: this.productForm.value.price,
+      description: this.productForm.value.description,
+      imgUrl: this.productForm.value.imgUrl,
+    };
 
-        if (response.ok) {
-          console.log('Product added successfully');
-          // Additional logic after successfully adding the product
-        } else {
-          console.error('Failed to add product');
-          // Additional error handling logic
-        }
-      } catch (error) {
-        console.error('Failed to add product', error);
-        // Additional error handling logic
-      }
+    try {
+      await fetch(this.productService.url, {
+        method: 'POST',
+        body: JSON.stringify(newProduct),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+
+      console.log('Product added successfully');
+    } catch (error) {
+      console.log('Failed to add product', error);
     }
 
     // Optional: Clear the form after adding the product

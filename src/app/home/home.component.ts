@@ -1,4 +1,11 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  EventEmitter,
+  Inject,
+  Injectable,
+  Output,
+} from '@angular/core';
 import { ProductService } from '../product.service';
 import { Products } from '../products';
 
@@ -13,6 +20,8 @@ export class HomeComponent {
   error: any = null;
 
   productService: ProductService = inject(ProductService);
+
+  @Output() deleteProductEvent = new EventEmitter<number>();
 
   constructor() {
     this.fetchProducts();
@@ -29,6 +38,17 @@ export class HomeComponent {
       this.error = error;
     } finally {
       this.isLoading = false;
+    }
+  }
+
+  async deleteProduct(id: number) {
+    try {
+      await this.productService.deleteProduct(id);
+      console.log('Product deleted successfully');
+      // Additional logic after successfully deleting the product
+    } catch (error) {
+      console.error('Failed to delete product', error);
+      // Additional error handling logic
     }
   }
 }

@@ -13,6 +13,10 @@
         <span>View</span>
       </a>
     </button>
+    <button mat-menu-item (click)="deleteProduct(product.id)">
+      <mat-icon>delete</mat-icon>
+      <span>Delete</span>
+    </button>
   </mat-menu>
   <button
     mat-icon-button
