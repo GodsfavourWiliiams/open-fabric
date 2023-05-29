@@ -1,5 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  Inject,
+} from '@angular/core';
+import { Products } from '../products';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,6 +19,7 @@ import { ProductService } from '../product.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { EditProductService } from '../edit-product.service';
 
 @Component({
   selector: 'app-add-edit',
@@ -14,10 +27,34 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./add-edit.component.css'],
 })
 export class AddEditComponent {
-  constructor(public dialog: MatDialog) {}
+  product: Products | undefined;
+
+  constructor(
+    public dialog: MatDialog,
+    private editProductService: EditProductService
+  ) {}
+
+  ngOnInit() {
+    this.editProductService.currentProduct.subscribe((product) => {
+      this.product = product;
+      if (product) {
+        this.openDialog();
+      }
+    });
+  }
 
   openDialog() {
-    this.dialog.open(DialogDataExampleDialog, {});
+    const dialogRef = this.dialog.open(DialogDataExampleDialog, {
+      data: {
+        product: this.product,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+        // Refresh the product list or perform any necessary actions after successful add/edit
+      }
+    });
   }
 }
 
@@ -36,32 +73,38 @@ export class AddEditComponent {
   ],
 })
 export class DialogDataExampleDialog implements OnInit {
+  // @Input() product: Products | undefined;
   productForm: FormGroup = new FormGroup({});
+  @Output() productAddedOrUpdated: EventEmitter<string> =
+    new EventEmitter<string>();
 
   existingIds: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private productService: ProductService
+    private productService: ProductService,
+    public dialogRef: MatDialogRef<DialogDataExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: { product: Products | undefined }
   ) {}
 
   async ngOnInit() {
-    this.productForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      color: ['', Validators.required],
-      price: ['', Validators.required],
-      description: ['', Validators.required],
-      imgUrl: ['', Validators.required],
-    });
-
+    if (this.data.product) {
+      this.productForm = this.formBuilder.group({
+        title: [this.data.product.title || '', Validators.required],
+        color: [this.data.product.color || '', Validators.required],
+        price: [this.data.product.price || '', Validators.required],
+        description: [this.data.product.description || '', Validators.required],
+        imgUrl: [this.data.product.imgUrl || '', Validators.required],
+      });
+    }
+    console.log(this.data.product);
     this.existingIds = await this.productService.getExistingIds();
   }
 
   generateRandomId(): string {
     let randomId = '';
-    const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const idLength = 8;
+    const characters = '0123456789';
+    const idLength = 4;
 
     for (let i = 0; i < idLength; i++) {
       randomId += characters.charAt(
@@ -76,31 +119,57 @@ export class DialogDataExampleDialog implements OnInit {
     if (!this.productForm.valid) {
       return;
     }
+    if (this.data.product) {
+      // Editing existing product
+      const updatedProduct = {
+        id: this.data.product.id, // Use this.data.product instead of this.product
+        title: this.productForm.value.title,
+        color: this.productForm.value.color,
+        price: this.productForm.value.price,
+        description: this.productForm.value.description,
+        imgUrl: this.productForm.value.imgUrl,
+      };
 
-    const newId = this.generateRandomId();
-    const newProduct = {
-      id: newId,
-      title: this.productForm.value.title,
-      color: this.productForm.value.color,
-      price: this.productForm.value.price,
-      description: this.productForm.value.description,
-      imgUrl: this.productForm.value.imgUrl,
-    };
+      try {
+        await fetch(`${this.productService.url}/${this.data.product.id}`, {
+          // Use this.data.product instead of this.product
+          method: 'PUT',
+          body: JSON.stringify(updatedProduct),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        });
 
-    try {
-      await fetch(this.productService.url, {
-        method: 'POST',
-        body: JSON.stringify(newProduct),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      });
+        console.log('Product updated successfully');
+      } catch (error) {
+        console.log('Failed to update product', error);
+      }
+    } else {
+      // Adding new product
+      const newId = this.generateRandomId();
+      const newProduct = {
+        id: newId,
+        title: this.productForm.value.title,
+        color: this.productForm.value.color,
+        price: this.productForm.value.price,
+        description: this.productForm.value.description,
+        imgUrl: this.productForm.value.imgUrl,
+      };
 
-      console.log('Product added successfully');
-    } catch (error) {
-      console.log('Failed to add product', error);
+      try {
+        await fetch(this.productService.url, {
+          method: 'POST',
+          body: JSON.stringify(newProduct),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        });
+
+        console.log('Product added successfully');
+      } catch (error) {
+        console.log('Failed to add product', error);
+      }
     }
-
     // Optional: Clear the form after adding the product
     this.productForm.reset();
   }

@@ -3,7 +3,7 @@
 <mat-card class="card" *ngIf="!isLoading && !isError">
   <img mat-card-image [src]="product.imgUrl" [alt]="product.title" />
   <mat-menu #menu="matMenu" xPosition="before">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="openEditDialog(product)">
       <mat-icon>edit</mat-icon>
       <span>Edit</span>
     </button>
