@@ -1,9 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../product.service';
-
-export interface DialogData {}
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-edit',
@@ -19,8 +22,18 @@ export class AddEditComponent {
 }
 
 @Component({
-  selector: 'dialog-data-example-dialog',
+  selector: 'app-dialogg',
   templateUrl: 'dialog.html',
+  styleUrls: ['./add-edit.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
 })
 export class DialogDataExampleDialog implements OnInit {
   productForm: FormGroup = new FormGroup({});
@@ -28,7 +41,6 @@ export class DialogDataExampleDialog implements OnInit {
   existingIds: string[] = [];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private formBuilder: FormBuilder,
     private productService: ProductService
   ) {}
@@ -37,6 +49,7 @@ export class DialogDataExampleDialog implements OnInit {
     this.productForm = this.formBuilder.group({
       title: ['', Validators.required],
       color: ['', Validators.required],
+      price: ['', Validators.required],
       description: ['', Validators.required],
       imgUrl: ['', Validators.required],
     });
@@ -60,12 +73,13 @@ export class DialogDataExampleDialog implements OnInit {
   }
 
   async addProduct() {
-    if (this.productForm.valid) {
+    if (!this.productForm.valid) {
       const newId = this.generateRandomId();
       const newProduct = {
         id: newId,
         title: this.productForm.value.title,
         color: this.productForm.value.color,
+        price: this.productForm.value.price,
         description: this.productForm.value.description,
         imgUrl: this.productForm.value.imgUrl,
       };

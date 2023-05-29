@@ -24,6 +24,7 @@ export class HomeComponent {
 
     try {
       this.productList = await this.productService.getAllProduct();
+      console.log(this.productList);
     } catch (error) {
       this.error = error;
     } finally {
